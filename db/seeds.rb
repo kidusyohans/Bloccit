@@ -9,18 +9,35 @@
 require 'faker'
 
 # Create Posts
-50.times do
-    Post.create!(
-      title:  Faker::Lorem.sentence,
-      body:   Faker::Lorem.paragraph
+
+25.times do
+  Post.create!(
+    title: Faker::Lorem.words, 
+    body: Faker::Lorem.characters 
     )
          end
+
+50.times do
+  Post.create!(
+    title:  Faker::Lorem.sentence,
+    body:   Faker::Lorem.paragraph
+    )
+         end
+         
+         
     posts = Post.all
      
 # Create Comments
-100.times do
-    Comment.create!(
-      post: posts.sample,
-      body: Faker::Lorem.paragraph
+75.times do
+  Comment.create!(
+    post: posts.sample,
+    body: Faker::Lorem.characters 
     )
         end
+100.times do
+  Comment.create!(
+    post: posts.sample,
+    body: Faker::Lorem.paragraph
+    )
+        end
+      
