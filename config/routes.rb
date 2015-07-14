@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
 
+  
+
+  
+  resources :posts
+  
+  get 'about' => 'welcome#about'
+
   root to: 'welcome#index'
   
 
-  get 'welcome/about'
-  get 'welcome/index'
-  get 'welcome/vacation'
+  
+  #get 'welcome/vacation'
+  
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
