@@ -2,11 +2,7 @@ Rails.application.routes.draw do
 
   
 
-  resources :Advertisement
-
-  get 'advertisement/index'
-
-  get 'advertisement/show'
+  resources :advertisements
 
   resources :posts
   
