@@ -1,0 +1,4 @@
+<h1>New Question</h1>
+
+<input name="question[resolved]" type="hidden" value="no" />
+<input type="checkbox" id="question_resolved" name="question[resolved]" value="yes" />
