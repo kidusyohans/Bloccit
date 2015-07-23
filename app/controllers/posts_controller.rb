@@ -1,4 +1,23 @@
 class PostsController < ApplicationController
+  
+  
+  before_action :flash_attack
+    
+    private
+    
+    def flash_attack
+      unless flash_attack?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to new_login_url # halts request cycle
+      end
+    end
+    
+    skip_before_action :require_login, only: [:new, :index ]
+      
+end
+      
+    
+  
   def index
     @posts = Post.all
   end
