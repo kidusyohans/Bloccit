@@ -44,4 +44,6 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   #defined default URL options in your environment files
   #in production, :host should be set to the actual host of your application.
+  config.action_mailer.raise_delivery_errors = true
+  # Override Action Mailer's 'silent errors' in development
 end
