@@ -1,7 +1,7 @@
-if Rails.env.development?
+if Rails.env.development? || Rails.env.production?
 	ActionMailer::Base.delivery_method = :smtp
 	ActionMailer::Base.smtp_settings = {
-		address:        'kidusyohans@gmail.com',
+		#address:        'kidusyohans@gmail.com',
 		port:           '587',
 		authentication: :plain,
 		user_name:      ENV['SENDGRID_USERNAME'],

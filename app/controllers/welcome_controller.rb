@@ -8,7 +8,5 @@ class WelcomeController < ApplicationController
   def contact
   end
   
-  def vacation
-    @location = "Paris"
-  end
-end
+  
+end # welcome controller end
