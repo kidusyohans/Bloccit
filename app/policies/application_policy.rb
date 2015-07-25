@@ -1,9 +1,13 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  class Scope
+  attr_reader :user, :record, :scope
+  
 
-  def initialize(user, record)
+  def initialize(user, record, scope)
     @user = user
     @record = record
+    @scope = scope
+    
   end
 
   def index?
@@ -38,16 +42,10 @@ class ApplicationPolicy
     record.class
   end
 
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
+  def resolve
       scope
-    end
+  end
+    
+    
   end
 end
