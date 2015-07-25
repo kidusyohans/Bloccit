@@ -57,5 +57,7 @@ group :development, :test do
   gem 'spring'
   #gem to authenticate Bloccit's users
   gem 'devise'
+  #gem that makes it easier to authorize different users for different tasks in your app
+  gem 'pundit'
 end
 

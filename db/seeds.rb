@@ -71,11 +71,36 @@ users = User.all
     body: Faker::Lorem.paragraph
     )
     
-    user = User.first
-    user.skip_reconfirmation!
-    user.update_attributes!(
-      email: 'kidusyohans@hotmail.com',
-      password: 'helloworld'
-      )
-        end
+      
+# Create an admin user
+admin = User.new(
+  name:     'Admin User',
+  email:    '1admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+  )
+  admin.skip_confirmation!
+  admin.save!
+  
+# Create a moderator
+moderator = User.new(
+  name:     'Moderator User',
+  email:    '1moderator@example.com',
+  password: 'helloworld',
+  role:     'moderator'
+  )
+  moderator.skip_confirmation!
+  moderator.save!
+  
+# Create a member
+member = User.new(
+  name:     'Member User',
+  email:    '1member@example.com',
+  password: 'helloworld'
+  )
+  member.skip_confirmation!
+  member.save!
+    
+    
+end
       
