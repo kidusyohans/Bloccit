@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   
   resources :advertisements
+  
+  resources :summaries
 
   
   get 'about' => 'welcome#about'
