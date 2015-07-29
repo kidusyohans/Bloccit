@@ -1,11 +1,20 @@
 class PostPolicy < ApplicationPolicy
-  class Scope < Scope
+  class Scope 
+  	
+  	attr_reader :user, :scope
+  	
+  	def initialize(user, scope
+  	)
+  	@user = user
+  	@scope = scope
+  	end
+  	
   	
     def resolve
     	if user.admin?
     		scope.all
     	else
-    		scope.where(:published => true)
+    		scope.where(:user_id => user_id)
     	end
     end
     
