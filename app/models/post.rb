@@ -1,8 +1,9 @@
 class Post < ActiveRecord::Base
     has_many :comments
+    has_many :summaries
     belongs_to :user
     belongs_to :topic
-    has_one :summary
+
     
     default_scope { order('created_at DESC') }
     scope :ordered_by_title, -> { update(ordered_by_title: true) }
