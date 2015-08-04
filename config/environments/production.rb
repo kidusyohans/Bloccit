@@ -3,6 +3,9 @@ Rails.application.configure do
 
   # http://bloccit.herokuapp.com
   config.action_mailer.default_url_options = { host: 'bloccit.herokuapp.com' }
+  #Notifier.welcome(User.first).deliver_now # sends the email
+  #mail = Notifier.welcome(User.first)      # => an ActionMailer::MessageDelivery object
+  #mail.deliver_now                    # sends the email
   
   # Code is not reloaded between requests.
   config.cache_classes = true
