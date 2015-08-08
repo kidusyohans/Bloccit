@@ -9,6 +9,9 @@ gem 'rails', '4.2.1'
 
 gem 'bootstrap-sass'
 
+#attributes will be rendered in Markdown
+gem 'redcarpet'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
