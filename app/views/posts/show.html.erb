@@ -4,6 +4,12 @@
 	<div class="col-md-8">
 		<p><%= post.markdown_body %></p>
 	</div>
+	
+	<% @post_images.each do |p| %>
+		<%= image_tag p.avatar_url %>
+		<%= link_to "Edit Image", edit_post_image_path(p) %>
+	<% end %>
+	
 	<div class="col-md-4">
 		<% if policy(@post).edit? %>
 		<%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>

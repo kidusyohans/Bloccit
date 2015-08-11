@@ -1,5 +1,12 @@
 <h1><%= @topic.name %></h1>
 
+
+
+<% @post_images.each do |p| %>
+		<%= image_tag p.avatar_url %>
+		<%= link_to "Edit Image", edit_post_image_path(p) %>
+	<% end %>
+
 <% if policy(@topic).update? %>
 		<%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
 <% end %>
