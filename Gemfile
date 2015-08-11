@@ -12,6 +12,15 @@ gem 'bootstrap-sass'
 #attributes will be rendered in Markdown
 gem 'redcarpet'
 
+#installing image uploading software
+gem 'carrierwave'
+
+# to manipulate images
+gem 'mini_magick'
+
+#makes uploading to S3 easier
+gem 'fog'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
