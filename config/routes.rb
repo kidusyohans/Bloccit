@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'users/update'
 
 devise_for :users
+resources :user, only: [:show]
   resources :questions
   
   resources :topics do

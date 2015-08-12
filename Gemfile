@@ -14,17 +14,18 @@ gem 'redcarpet'
 
 #installing image uploading software
 gem 'carrierwave'
+gem 'cloudinary'
 
 # to manipulate images
 gem 'mini_magick'
 
 #makes uploading to S3 easier
 gem 'fog'
-
+  gem "figaro"
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem "figaro"
+
 end
 
 group :development do
