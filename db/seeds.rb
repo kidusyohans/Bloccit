@@ -45,14 +45,14 @@ users = User.all
 
 # Create Posts
 
-45.times do
+  45.times do
   Post.create!(
     title: Faker::Lorem.words, 
     body: Faker::Lorem.characters 
     )
          end
 
-70.times do
+  70.times do
   Post.create!(
     user:   users.sample,
     topic:  topics.sample,
