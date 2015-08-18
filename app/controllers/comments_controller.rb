@@ -11,6 +11,9 @@ class CommentsController < ApplicationController
     end 
   end 
   
+  def show
+  authorize @comments
+  end
   
   private
   
