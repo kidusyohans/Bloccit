@@ -11,7 +11,7 @@ resources :users, only: [:show, :update]
   resources :topics do
     resources :posts, except: [:index] do
       resources :summaries
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
   end
   

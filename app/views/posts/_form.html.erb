@@ -1,12 +1,5 @@
 <%= form_for [topic, post] do |f| %>
 
-
-
-<%= form_for(@post, :html => { :multipart => true }) do |f| %>
-	<div class="field">
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
-	</div>
 	
 	<%= f.fields_for :post_images do |p| %>
 	<div class="field">
@@ -17,8 +10,6 @@
 	<div class="actions">
 		<%= f.submit %>
 	</div>
-<% end %>
-		
 
 
   <% if post.errors.any? %>
@@ -26,8 +17,8 @@
       <h4>There are <%= pluralize(post.errors.count, "error") %>.</h4>
       <ul>
         <% post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-  <% end %>
+        	<li><%= msg %></li>
+  			<% end %>
       </ul>
     </div>
   <% end %>

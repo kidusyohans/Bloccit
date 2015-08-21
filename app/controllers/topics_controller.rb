@@ -1,7 +1,18 @@
 class TopicsController < ApplicationController
   
   
-  
+  def destroy
+        @topic = Topic.find(params[:id])
+        authorize @topic
+        if @topic.destroy
+          flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
+          redirect_to topics_path
+        else 
+          flash[:error] = "There was an error deleting the topic."
+          render :show
+        end
+  end
+   
   def new
     @topic = Topic.new
     authorize @topic
@@ -31,10 +42,10 @@ class TopicsController < ApplicationController
     else
       flash[:error] = "Error creating topic. Please try again."
       render :new
-      
-    end
-    
+    end 
   end
+    
+end
   
   def update
     @topic = Topic.find(topic_params)
@@ -45,12 +56,15 @@ class TopicsController < ApplicationController
       flash[:error] = "Error saving topic. Please try again."
       render :edit
     end
-  end
+    
+     
+  
   
   private
   
   def topic_params
     params.require(:topic).permit(:name, :description, :public)
+  
   end
-    
-end
+  
+  end 

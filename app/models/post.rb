@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-    has_many :comments
+    has_many :comments, dependent: :destroy
     has_many :summaries
     belongs_to :user
     belongs_to :topic
@@ -18,11 +18,11 @@ class Post < ActiveRecord::Base
   validates :user, presence: true
 
 
-  def markdown_to_html(title)
+  def markdown_title
   	render_as_markdown(self.title)
   end
   
-  def markdown_to_html(body)
+  def markdown_body
   	render_as_markdown(self.body)
   end
 

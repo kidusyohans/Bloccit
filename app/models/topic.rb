@@ -1,9 +1,9 @@
 class Topic < ActiveRecord::Base
-    has_many :posts
+    has_many :posts, dependent: :destroy
 
-    Topic.order('created_at DESC').page(params[:page]).per_page(100)
+    Topic.order('created_at DESC')
     
-    Will_Paginate.per_page = 100
+    WillPaginate.per_page = 100
     
     validates :name, length: { minimum: 5 }, presence: true
     
