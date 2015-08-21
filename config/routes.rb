@@ -9,10 +9,11 @@ resources :users, only: [:show, :update]
   resources :questions
   
   resources :topics do
-    resources :posts, except: [:index] do
-      resources :summaries
+    resources :posts, except: [:index]
+  end
+      resources :posts, only: [] do
       resources :comments, only: [:create, :destroy]
-    end
+    
   end
   
   resources :advertisements
