@@ -1,16 +1,25 @@
 class Post < ActiveRecord::Base
-    has_many :comments, dependent: :destroy
-    has_many :summaries
-    belongs_to :user
-    belongs_to :topic
-    has_many :votes, dependent: :destroy
-    
-    after_create :create_vote
-
-	mount_uploader :image, AvatarUploader
+  has_many :comments, dependent: :destroy
+  has_many :summaries
+  belongs_to :user
+  belongs_to :topic
+  has_many :votes, dependent: :destroy
+  validates :title, length: { minimum: 5 }, presence: true
+  validates :body, length: { minimum: 20 }, presence: true
+  validates :topic, presence: true
+  validates :user, presence: true
+  #after_create :create_vote
+  
+  default_scope { order('rank DESC') }
+  scope :ordered_by_title, -> { update(ordered_by_title: true) }
+  scope :ordered_by_reverse_created_at, -> { update(ordered_by_reverse_created_at: true)}
 	
 	def up_votes
 	  votes.where(value: 1).count
+	end
+	
+	def down_votes
+	  votes.where(value: -1).count
 	end
   
   def update_rank
@@ -18,17 +27,10 @@ class Post < ActiveRecord::Base
     new_rank = points + age_in_days
     update_attribute(:rank, new_rank)
   end
-    default_scope { order('rank DESC') }
-    scope :ordered_by_title, -> { update(ordered_by_title: true) }
-    scope :ordered_by_reverse_created_at, -> { 
-    	update(ordered_by_reverse_created_at: true)
-  }
-  
-  validates :title, length: { minimum: 5 }, presence: true
-  validates :body, length: { minimum: 20 }, presence: true
-  #validates :topic, presence: true
-  #validates :user, presence: true
 
+  def points
+    votes.sum(:value).to_i
+  end
 
   def markdown_title
   	render_as_markdown(self.title)
@@ -38,7 +40,7 @@ class Post < ActiveRecord::Base
   	render_as_markdown(self.body)
   end
 
-private 
+  #private 
 
   def render_as_markdown(markdown)
       renderer = Redcarpet::Render::HTML.new
@@ -47,7 +49,6 @@ private
       (redcarpet.render markdown).html_safe
   end
   
-private
 
   def create_vote
     self.user.votes.create(value: 1, post: self)

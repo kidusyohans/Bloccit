@@ -48,6 +48,7 @@ class PostsController < ApplicationController
     authorize @post
     #raise # this will short-circuit the method
     if @post.save
+      @post.create_vote
       flash[:notice] = "Post was saved."
       redirect_to [@topic, @post]
     else
