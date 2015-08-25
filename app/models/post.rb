@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
     belongs_to :user
     belongs_to :topic
     has_many :votes, dependent: :destroy
+    
+    after_create :create_vote
 
 	mount_uploader :image, AvatarUploader
 	
@@ -45,5 +47,9 @@ private
       (redcarpet.render markdown).html_safe
   end
   
+private
 
+  def create_vote
+    self.user.votes.create(value: 1, post: self)
+  end
 end
