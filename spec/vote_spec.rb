@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Vote do
 	def valid?
 		(@vote == 1) || (@vote == -1)
