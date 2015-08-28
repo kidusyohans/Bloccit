@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User do
 
- #include TestFactories
+ include TestFactories
 
  describe "#favorited(post)" do
 
@@ -16,8 +16,10 @@ describe User do
    end
 
    it "returns the appropriate favorite if it exists" do
-     favorite = Favorite.new
-     expect( @user.favorite ).to eq( favorited(@post) )
+     favorite = @user.favorites.build(post: @post)
+     favorite.save
+     
+     expect(@user.favorited(@post)).to eq(favorite)
    end
 
    it "returns `nil` if the user has favorited another post" do
