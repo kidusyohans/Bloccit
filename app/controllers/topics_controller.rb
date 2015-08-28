@@ -45,7 +45,7 @@ class TopicsController < ApplicationController
     end 
   end
     
-end
+
   
   def update
     @topic = Topic.find(topic_params)
@@ -66,5 +66,5 @@ end
     params.require(:topic).permit(:name, :description, :public)
   
   end
-  
-  end 
+  end
+end

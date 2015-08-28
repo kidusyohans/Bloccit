@@ -5,8 +5,9 @@ class FavoritesController < ApplicationController
      favorite = current_user.favorites.build(post: post)
  
      if favorite.save
-     	redirect_to [@topic, @post], notice: "favorite saved successfully."
-       
+  
+       flash[:notice] = "favorite was saved."
+      redirect_to [ @post]
      else
        redirect_to [@topic, @post], notice: "favorite failed to save."
       render :new
@@ -40,3 +41,4 @@ def destroy
       flash[:error] = "Comment couldn't be deleted. Try again."
       redirect_to [@topic, @post]
     end
+end

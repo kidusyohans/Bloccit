@@ -78,6 +78,9 @@ group :development, :test do
   
   #testing frameworks for Rails
   gem 'rspec-rails', '~> 3.0'
+  
+  #provides a library to test web applications by simulating how a real user would interact with them
+  gem 'capybara'
 
 end
 

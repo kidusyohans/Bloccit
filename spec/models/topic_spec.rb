@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Topic do
    describe "scopes" do
  
@@ -9,8 +11,9 @@ describe Topic do
      describe "publicly_viewable" do
        it "returns a relation of all public topics" do
          expect(Topic.publicly_viewable).to eq( [@public_topic] )
-       end
+  
      end
+   end
  
      describe "privately_viewable" do
        it "returns a relation of all private topics" do
