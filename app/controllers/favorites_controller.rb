@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
 	end
 	
 	def destroy
-   @post = Post.find(params[:user_id])
+   @post = Post.find(params[:post_id])
  
    if favorite.destroy
      flash[:notice] = "favorite was removed."

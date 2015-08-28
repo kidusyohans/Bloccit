@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
   #after_create :create_vote
   
   default_scope { order('rank DESC') }
+  scope :visible_to, ->  { user ? all : joins(:topic).where('topics.public' => true) }
   scope :ordered_by_title, -> { update(ordered_by_title: true) }
   scope :ordered_by_reverse_created_at, -> { update(ordered_by_reverse_created_at: true)}
 	

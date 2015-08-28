@@ -1,9 +1,7 @@
 <h1><%= @topic.name %></h1>
 <p><%= @topic.description %></p>
 
-<% @posts.each do |post| %>
-	<%= link_to post.title, [post.topic, post] %>
-<% end %>
+
 <div class="col-md-4">
 	<% if policy(Post.new).create? %>
 	<%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
