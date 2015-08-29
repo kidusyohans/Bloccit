@@ -30,7 +30,7 @@ gem 'will_paginate', '~> 3.0.5'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-
+  gem 'puma', group: :production
 end
 
 group :development do
@@ -81,6 +81,12 @@ group :development, :test do
   
   #provides a library to test web applications by simulating how a real user would interact with them
   gem 'capybara'
+  
+  #performance tracking tool
+  gem 'newrelic_rpm'
+  
+  
+  gem 'thin', group: :development
 
 end
 
