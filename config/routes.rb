@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   get 'users/update'
 
 devise_for :users
-resources :users, only: [:show, :update]
+resources :users, only: [:update, :show, :index]
   resources :questions
   
   resources :topics do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index], controller: 'topics/posts'
   end
   
-  resources :posts, only: [] do
+  resources :posts, only: [:index] do
     resources :comments, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
     
