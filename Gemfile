@@ -85,6 +85,9 @@ group :development, :test do
   #performance tracking tool
   gem 'newrelic_rpm'
   
+  #tools that make object creation in tests easier
+  gem 'factory_girl_rails', '~> 4.0'
+  
   
   gem 'thin', group: :development
 
