@@ -9,6 +9,9 @@ class CommentsController < ApplicationController
     authorize @post
     #puts "*" * 15
     #puts @comment.inspect
+    @comment = Comments.new( comment_params )
+    @comment.post = @post
+    @new_comment = Comment.new
     if @comment.save
       redirect_to [@topic, @post], notice: "Comment saved successfully."
     else
