@@ -1,7 +1,7 @@
 <h1><%= @topic.name %></h1>
 <p><%= @topic.description %></p>
 
-
+<div class="row">
 <div class="col-md-4">
 	<% if policy(Post.new).create? %>
 	<%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
@@ -11,10 +11,6 @@
 <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
 <% end %>
 </div>
-<h2>Comments</h2>
- <div class='js-comments'>
-   <%= render partial: 'comments/comment', collection: @comments %>
- </div>
- <div class='new-comment'>
-   <%= render 'comments/form' %>
- </div>
+<div class="col-md-8"></div>
+</div>
+<%= render partial: "posts/post", collection: @topic.posts %>
